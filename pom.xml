@@ -68,6 +68,12 @@
             <url>https://github.com/vongosling</url>
             <timezone>+8</timezone>
         </developer>
+        <developer>
+            <name>stanvl</name>
+            <email>stanvl@live.com</email>
+            <url>https://github.com/stanvl</url>
+            <timezone>+8</timezone>
+        </developer>
     </developers>
 
     <licenses>

@@ -59,16 +59,13 @@ public class DefaultMQProducer extends ClientConfig implements MQProducer {
         this(MixAll.DEFAULT_PRODUCER_GROUP, null);
     }
 
-
     public DefaultMQProducer(final String producerGroup) {
         this(producerGroup, null);
     }
 
-
     public DefaultMQProducer(RPCHook rpcHook) {
         this(MixAll.DEFAULT_PRODUCER_GROUP, rpcHook);
     }
-
 
     public DefaultMQProducer(final String producerGroup, RPCHook rpcHook) {
         this.producerGroup = producerGroup;
