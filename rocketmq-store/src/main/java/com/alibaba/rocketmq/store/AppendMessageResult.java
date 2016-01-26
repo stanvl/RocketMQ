@@ -16,23 +16,23 @@
 package com.alibaba.rocketmq.store;
 
 /**
- * When write a message to the commit log, returns results
+ * 向物理队列写入消息返回结果
  * 
  * @author shijia.wxr<vintage.wang@gmail.com>
  * @since 2013-7-21
  */
 public class AppendMessageResult {
-    // Return code
+    // 返回码
     private AppendMessageStatus status;
-    // Where to start writing
+    // 从哪里开始写入
     private long wroteOffset;
-    // Write Bytes
+    // 写入字节数
     private int wroteBytes;
-    // Message ID
+    // 消息ID
     private String msgId;
-    // Message storage timestamp
+    // 消息存储时间
     private long storeTimestamp;
-    // Consume queue's offset(step by one)
+    // 写入逻辑队列的offset（递进1）
     private long logicsOffset;
 
 

@@ -19,7 +19,7 @@ import java.nio.ByteBuffer;
 
 
 /**
- * Write messages callback interface
+ * 写入消息的回调接口
  * 
  * @author shijia.wxr<vintage.wang@gmail.com>
  * @since 2013-7-21
@@ -27,12 +27,15 @@ import java.nio.ByteBuffer;
 public interface AppendMessageCallback {
 
     /**
-     * After message serialization, write MapedByteBuffer
+     * 序列化消息后，写入MappedByteBuffer
      * 
      * @param byteBuffer
+     *            要写入的target
      * @param maxBlank
+     *            要写入的target最大空白区
      * @param msg
-     * @return How many bytes to write
+     *            要写入的message
+     * @return 写入多少字节
      */
     public AppendMessageResult doAppend(final long fileFromOffset, final ByteBuffer byteBuffer,
             final int maxBlank, final Object msg);

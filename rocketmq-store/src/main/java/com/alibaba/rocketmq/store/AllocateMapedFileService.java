@@ -30,7 +30,7 @@ import com.alibaba.rocketmq.common.constant.LoggerName;
 
 
 /**
- * Create MapedFile in advance
+ * 预分配MappedFile服务
  * 
  * @author shijia.wxr<vintage.wang@gmail.com>
  * @since 2013-7-21
@@ -129,7 +129,7 @@ public class AllocateMapedFileService extends ServiceThread {
 
 
     /**
-     * Only interrupted by the external thread, will return false
+     * 只有被外部线程中断，才会返回false
      */
     private boolean mmapOperation() {
         AllocateRequest req = null;
@@ -145,6 +145,7 @@ public class AllocateMapedFileService extends ServiceThread {
                 long beginTime = System.currentTimeMillis();
                 MapedFile mapedFile = new MapedFile(req.getFilePath(), req.getFileSize());
                 long eclipseTime = UtilAll.computeEclipseTimeMilliseconds(beginTime);
+                // 记录大于10ms的
                 if (eclipseTime > 10) {
                     int queueSize = this.requestQueue.size();
                     log.warn("create mapedFile spent time(ms) " + eclipseTime + " queue size " + queueSize
@@ -172,10 +173,13 @@ public class AllocateMapedFileService extends ServiceThread {
     }
 
     class AllocateRequest implements Comparable<AllocateRequest> {
-        // Full file path
+        // 文件全路径
         private String filePath;
+        // 文件大小
         private int fileSize;
+        // 计数器
         private CountDownLatch countDownLatch = new CountDownLatch(1);
+        // MappedFile
         private volatile MapedFile mapedFile = null;
 
 
